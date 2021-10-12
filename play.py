@@ -14,7 +14,7 @@ def play_a_game_auto(total_episodes=10, agent=None):
     if agent is not None:
         policy = agent.get_initial_policy(state)
         reward, state = episode(game, rewards_rec, policy[:, state])
-        for _ in range(total_episodes):
+        for _ in range(total_episodes - 1):
             policy = agent.get_updated_policy(reward, state)
             reward, state = episode(game, rewards_rec, policy[:, state])
     else:
