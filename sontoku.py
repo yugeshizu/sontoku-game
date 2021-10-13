@@ -25,8 +25,8 @@ class Sontoku:
     transition_probs[2, 2, 0] = 0.0
     transition_probs[2, 2, 1] = 0.0
 
-    rewards = np.zeros((len(STATES), len(ACTIONS)))
-    rewards[0, 0] = 0
+    rewards = np.zeros((len(STATES), len(ACTIONS)), dtype=np.int32)
+    rewards[0, 0] = 1  # テキストでは0だが誤植だと思われる
     rewards[0, 1] = -1
     rewards[1, 0] = 1
     rewards[1, 1] = -1
