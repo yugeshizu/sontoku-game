@@ -49,7 +49,7 @@ class AgentSARSA(Agent):
 
 
 if __name__ == "__main__":
-    from play import play_a_game_auto
+    from autoplay import play_a_game_auto
 
     agent = AgentSARSA()
     rewards_rec = play_a_game_auto(10, agent)
