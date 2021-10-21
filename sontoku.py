@@ -10,21 +10,22 @@ class Sontoku:
     # 遷移確率：transition_probs[遷移後の状態, 現在の状態, 行動]
     transition_probs = np.zeros((len(STATES), len(STATES), len(ACTIONS)))
     transition_probs[0, 0, 0] = 1.0
-    transition_probs[0, 0, 1] = 0.5
-    transition_probs[0, 1, 0] = 1.0
-    transition_probs[0, 1, 1] = 0.0
-    transition_probs[0, 2, 0] = 0.0
-    transition_probs[0, 2, 1] = 1.0
-    transition_probs[1, 0, 1] = 0.5
-    transition_probs[1, 1, 0] = 0.0
-    transition_probs[1, 1, 1] = 0.5
-    transition_probs[1, 2, 0] = 1.0
-    transition_probs[1, 2, 1] = 0.0
+    transition_probs[1, 0, 0] = 0.0
     transition_probs[2, 0, 0] = 0.0
+    transition_probs[0, 0, 1] = 0.5
+    transition_probs[1, 0, 1] = 0.5
     transition_probs[2, 0, 1] = 0.0
+    transition_probs[0, 1, 0] = 1.0
+    transition_probs[1, 1, 0] = 0.0
     transition_probs[2, 1, 0] = 0.0
+    transition_probs[0, 1, 1] = 0.0
+    transition_probs[1, 1, 1] = 0.5
     transition_probs[2, 1, 1] = 0.5
+    transition_probs[0, 2, 0] = 0.0
+    transition_probs[1, 2, 0] = 1.0
     transition_probs[2, 2, 0] = 0.0
+    transition_probs[0, 2, 1] = 1.0
+    transition_probs[1, 2, 1] = 0.0
     transition_probs[2, 2, 1] = 0.0
 
     # 報酬：rewards[現在の状態, 行動]
