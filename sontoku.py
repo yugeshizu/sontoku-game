@@ -2,9 +2,12 @@ import numpy as np
 
 
 class Sontoku:
+    # 取りうる状態：テキストから番号を1だけずらした（減らした）
     STATES = (0, 1, 2)
+    # 取りうる行動：テキストから番号を1だけずらした（減らした）
     ACTIONS = (0, 1)
 
+    # 遷移確率：transition_probs[遷移後の状態, 現在の状態, 行動]
     transition_probs = np.zeros((len(STATES), len(STATES), len(ACTIONS)))
     transition_probs[0, 0, 0] = 1.0
     transition_probs[0, 0, 1] = 0.5
@@ -12,7 +15,6 @@ class Sontoku:
     transition_probs[0, 1, 1] = 0.0
     transition_probs[0, 2, 0] = 0.0
     transition_probs[0, 2, 1] = 1.0
-    transition_probs[1, 0, 0] = 0.0
     transition_probs[1, 0, 1] = 0.5
     transition_probs[1, 1, 0] = 0.0
     transition_probs[1, 1, 1] = 0.5
@@ -25,8 +27,9 @@ class Sontoku:
     transition_probs[2, 2, 0] = 0.0
     transition_probs[2, 2, 1] = 0.0
 
+    # 報酬：rewards[現在の状態, 行動]
     rewards = np.zeros((len(STATES), len(ACTIONS)), dtype=np.int32)
-    rewards[0, 0] = 1  # テキストでは0だが誤植だと思われる
+    rewards[0, 0] = 1  # テキストではここの報酬が0だが1の誤植だと思われる
     rewards[0, 1] = -1
     rewards[1, 0] = 1
     rewards[1, 1] = -1
