@@ -12,7 +12,7 @@ def play_a_game_auto(total_episodes=10, agent=None):
     state = game.state
     rewards_rec = [0]
     if agent is not None:
-        agent.initialize()
+        agent.initialize(state)
         for _ in range(total_episodes):
             action = agent.get_next_action()
             reward, state = game.play_an_episode(action)

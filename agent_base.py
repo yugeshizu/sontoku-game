@@ -19,7 +19,7 @@ class Agent:
     def get_next_action():
         return 0
 
-    def updated_policy(self, reward=0, next_state=STATES[0]):
+    def update(self, reward=0, next_state=STATES[0]):
         pass
 
 

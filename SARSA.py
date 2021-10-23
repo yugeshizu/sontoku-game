@@ -22,26 +22,30 @@ class AgentSARSA(Agent):
         else:
             self.q_func = np.zeros((len(STATES), len(ACTIONS)))
 
-    def get_initial_policy(self, state):
+    def initialize(self, state):
+        self.policy = self.policy_default
         self.state = state
-        return self.policy
+        self.action = np.random.choice(ACTIONS, p=self.policy[:, state])
 
-    def get_updated_policy(self, reward=0, next_state=STATES[0], action=ACTIONS[0]):
-        self.update_q_func(reward, next_state, action)
-        self.update_policy()
-        self.episode_counts += 1
-        self.state = next_state
-        return self.policy
+    def get_next_action():
+        return self.action
 
-    def update_q_func(self, reward, next_state, action):
+    def update(self, reward=0, next_state=STATES[0]):
         next_action = np.random.choice(ACTIONS, p=self.policy[:, next_state])
+        self.update_q_func(reward, next_state, next_action)
+        self.update_policy()
+        self.state = next_state
+        self.action = next_action
+        self.episode_counts += 1
+
+    def update_q_func(self, reward, next_state, next_action):
         error_TD = (
             reward
             + self.gamma * self.q_func[next_state, next_action]
-            - self.q_func[self.state, action]
+            - self.q_func[self.state, self.action]
         )
         learning_rate = 100 / (self.episode_counts + 200)
-        self.q_func[self.state, action] += learning_rate * error_TD
+        self.q_func[self.state, self.action] += learning_rate * error_TD
 
     def update_policy(self):
         param = 100 / (self.episode_counts + 200)
