@@ -17,8 +17,7 @@ def policy_model_default(state=None, q_func=None, param=None):
 
 
 def epsilon_greedy(state, q_func, epsilon=0.3):
-    r = np.random.rand()
-    if r < epsilon:
+    if np.random.rand() < epsilon:
         return policy_random[:, state]
     else:
         policy_at_state = np.zeros(len(ACTIONS))
