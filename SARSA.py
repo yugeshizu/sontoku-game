@@ -21,13 +21,14 @@ class AgentSARSA(Agent):
             self.q_func = np.full((len(STATES), len(ACTIONS)), REWARD_MAX / (1 - gamma))
         else:
             self.q_func = np.zeros((len(STATES), len(ACTIONS)))
+        self.initialize(state=0)
 
     def initialize(self, state):
         self.policy = self.policy_default
         self.state = state
         self.action = np.random.choice(ACTIONS, p=self.policy[:, state])
 
-    def get_next_action():
+    def get_next_action(self):
         return self.action
 
     def update(self, reward=0, next_state=STATES[0]):
