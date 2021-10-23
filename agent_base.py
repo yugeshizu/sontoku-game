@@ -9,15 +9,14 @@ ACTIONS = Sontoku.ACTIONS
 class Agent:
     def __init__(self):
         # policy_default: Always choose action=0
-        policy_default = np.zeros((len(ACTIONS), len(STATES)))
-        policy_default[0, :] = 1
-        self.policy = policy_default
+        self.policy_default = np.zeros((len(ACTIONS), len(STATES)))
+        self.policy_default[0, :] = 1
 
     def initialize(self, state=STATES[0]):
         pass
 
     def get_next_action():
-        return 0
+        return ACTIONS[0]
 
     def update(self, reward=0, next_state=STATES[0]):
         pass
