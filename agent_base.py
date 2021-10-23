@@ -13,11 +13,14 @@ class Agent:
         policy_default[0, :] = 1
         self.policy = policy_default
 
-    def get_initial_policy(self, state=STATES[0]):
-        return self.policy
+    def initialize(self, state=STATES[0]):
+        pass
 
-    def get_updated_policy(self, reward=0, next_state=STATES[0]):
-        return self.policy
+    def get_next_action():
+        return 0
+
+    def updated_policy(self, reward=0, next_state=STATES[0]):
+        pass
 
 
 if __name__ == "__main__":
