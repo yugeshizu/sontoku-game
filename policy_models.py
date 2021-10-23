@@ -9,11 +9,18 @@ ACTIONS = Sontoku.ACTIONS
 policy_default = np.zeros((len(ACTIONS), len(STATES)))
 policy_default[0, :] = 1
 
+policy_default_1 = np.zeros((len(ACTIONS), len(STATES)))
+policy_default_1[1, :] = 1
+
 policy_random = np.full((len(ACTIONS), len(STATES)), 1 / len(ACTIONS))
 
 
 def policy_model_default(state=None, q_func=None, param=None):
     return policy_default
+
+
+def policy_model_default_1(state=None, q_func=None, param=None):
+    return policy_default_1
 
 
 def epsilon_greedy(state, q_func, epsilon=0.3):
