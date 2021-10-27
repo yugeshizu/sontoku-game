@@ -15,12 +15,12 @@ policy_default_1[1, :] = 1
 policy_random = np.full((len(ACTIONS), len(STATES)), 1 / len(ACTIONS))
 
 
-def policy_model_default(state=None, q_func=None, param=None):
-    return policy_default
+def policy_model_default(state, q_func=None, param=None):
+    return policy_default[:, state]
 
 
-def policy_model_default_1(state=None, q_func=None, param=None):
-    return policy_default_1
+def policy_model_default_1(state, q_func=None, param=None):
+    return policy_default_1[:, state]
 
 
 def epsilon_greedy(state, q_func, epsilon=0.3):
